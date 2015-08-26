@@ -30,6 +30,9 @@ class GraphViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var blackTextField: UITextField!
   
     
+    @IBOutlet weak var orangeSlider: UISlider!
+    @IBOutlet weak var yellowSlider: UISlider!
+    @IBOutlet weak var greenSlider: UISlider!
     // Variables for background
     
     var redLegendView = UIImageView(image: UIImage(named: "redLegend"))
@@ -52,8 +55,8 @@ class GraphViewController: UIViewController, UITextFieldDelegate {
     //    var greenLegendWidth: Int = 0
     //    var greenLegendHeight: Int = 0
     //
-    var legendWidth = 0
-    var legendHeight = 0
+//    var legendWidth = 0
+//    var legendHeight = 0
     
     
     // Finshed
@@ -130,6 +133,20 @@ class GraphViewController: UIViewController, UITextFieldDelegate {
         
     }
     
+    
+    @IBAction func updateTextFields(sender: UISlider) {
+       
+        println("2: \(sender.tag)")
+        
+        switch sender.tag {
+        case 1: orangeTextField.text = "\(Int(orangeSlider.value))"
+        case 2: yellowTextField.text = "\(Int(yellowSlider.value))"
+        case 3: greenTextField.text = "\(Int(greenSlider.value))"
+        default: println("Invalid Slider error - GraphView")
+        }
+        
+    }
+    
     // Clocks
     
     func updateClocks()
@@ -193,18 +210,36 @@ class GraphViewController: UIViewController, UITextFieldDelegate {
         } else{
             
             var arrHt = split(htValues) {$0 == ","}
-            var redHt = NSString(string: arrHt[0])
-            var orangeHt = NSString(string: arrHt[1])
-            var yellowHt = NSString(string: arrHt[2])
-            var greenHt = NSString(string: arrHt[3])
             
-            
-            setBackground(redHt.doubleValue, orangeHt: orangeHt.doubleValue, yellowHt: yellowHt.doubleValue, greenHt: greenHt.doubleValue)
-            
-            println("RH: \(redHt)")
-            println("OH: \(orangeHt)")
-            println("YH: \(yellowHt)")
-            println("GH: \(greenHt)")
+            if arrHt.count == 9 {
+                
+                println("array size = 9")
+                
+                var redHt = NSString(string: arrHt[0])
+                var orangeHt = NSString(string: arrHt[1])
+                var yellowHt = NSString(string: arrHt[2])
+                var greenHt = NSString(string: arrHt[3])
+                var redTxt = NSString(string: arrHt[4])
+                var orangeTxt = NSString(string: arrHt[5])
+                var yellowTxt = NSString(string: arrHt[6])
+                var greenTxt = NSString(string: arrHt[7])
+                var blackTxt = NSString(string: arrHt[8])
+                
+                redTextField.text = redTxt as String
+                orangeTextField.text = orangeTxt as String
+                yellowTextField.text = yellowTxt as String
+                greenTextField.text = greenTxt as String
+                blackTextField.text = blackTxt as String
+                
+                setBackground(redHt.doubleValue, orangeHt: orangeHt.doubleValue, yellowHt: yellowHt.doubleValue, greenHt: greenHt.doubleValue)
+            } else{
+                println("bgValues.txt File corrupt")
+            }
+
+//            println("RH: \(redHt)")
+//            println("OH: \(orangeHt)")
+//            println("YH: \(yellowHt)")
+//            println("GH: \(greenHt)")
         }
     }
     
@@ -215,6 +250,16 @@ class GraphViewController: UIViewController, UITextFieldDelegate {
         var orangeHt = 0.125
         var yellowHt = 0.125
         var greenHt = 0.5
+        var redTxt = 100
+        var orangeTxt = 80
+        var yellowTxt = 70
+        var greenTxt = 60
+        var blackTxt = 20
+        
+        var storeHt = BackgroundCustomization()
+        storeHt.storeSetting(redHt, orangeHt: orangeHt, yellowHt: yellowHt, greenHt: greenHt, redTxt: redTxt, orangeTxt: orangeTxt, yellowTxt: yellowTxt, greenTxt: greenTxt, blackTxt: blackTxt)
+        
+        
         
         setBackground(redHt, orangeHt: orangeHt, yellowHt: yellowHt, greenHt: greenHt)
     }

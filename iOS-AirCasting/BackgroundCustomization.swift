@@ -37,15 +37,15 @@ class BackgroundCustomization {
         println("GH: \(greenHeight)")
         
         // Store value to file
-        storeSetting(redHeight, orangeHt: orangeHeight, yellowHt: yellowHeight, greenHt: greenHeight)
+        storeSetting(redHeight, orangeHt: orangeHeight, yellowHt: yellowHeight, greenHt: greenHeight, redTxt: red, orangeTxt: orange, yellowTxt: yellow, greenTxt: green, blackTxt: black)
 //        return (Int(redHeight), Int(orangeHeight), Int(yellowHeight), Int(greenHeight))
         return (redHeight, orangeHeight, yellowHeight, greenHeight)
     }
     
-    func storeSetting(redHt: Double, orangeHt: Double, yellowHt: Double, greenHt: Double){
+    func storeSetting(redHt: Double, orangeHt: Double, yellowHt: Double, greenHt: Double, redTxt: Int, orangeTxt: Int, yellowTxt: Int, greenTxt: Int, blackTxt: Int){
         var objFile = FileIO()
         
-        objFile.writeToDocumentsFile("bgValues.txt", value: "\(redHt),\(orangeHt),\(yellowHt),\(greenHt)")
+        objFile.writeToDocumentsFile("bgValues.txt", value: "\(redHt),\(orangeHt),\(yellowHt),\(greenHt),\(redTxt),\(orangeTxt),\(yellowTxt),\(greenTxt),\(blackTxt)")
     }
 
 }
