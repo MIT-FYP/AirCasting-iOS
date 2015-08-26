@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:iOS-AirCasting.xcodeproj">
+      location = "self:/Users/renjiharold/Documents/Xcode/iOS-AirCasting/iOS-AirCasting.xcodeproj">
    </FileRef>
 </Workspace>

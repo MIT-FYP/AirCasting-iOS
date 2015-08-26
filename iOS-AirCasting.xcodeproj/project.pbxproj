@@ -8,11 +8,19 @@
 
 /* Begin PBXBuildFile section */
 		44C915E61B8DB04D00FE4B24 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C915E51B8DB04D00FE4B24 /* AppDelegate.swift */; };
-		44C915E81B8DB04D00FE4B24 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C915E71B8DB04D00FE4B24 /* ViewController.swift */; };
 		44C915EB1B8DB04D00FE4B24 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 44C915E91B8DB04D00FE4B24 /* Main.storyboard */; };
 		44C915ED1B8DB04D00FE4B24 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 44C915EC1B8DB04D00FE4B24 /* Images.xcassets */; };
 		44C915F01B8DB04D00FE4B24 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 44C915EE1B8DB04D00FE4B24 /* LaunchScreen.xib */; };
 		44C915FC1B8DB04D00FE4B24 /* iOS_AirCastingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C915FB1B8DB04D00FE4B24 /* iOS_AirCastingTests.swift */; };
+		44C916081B8DB28200FE4B24 /* DashboardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C916071B8DB28200FE4B24 /* DashboardController.swift */; };
+		44C916101B8DB31800FE4B24 /* BackgroundCustomization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C9160D1B8DB31800FE4B24 /* BackgroundCustomization.swift */; };
+		44C916111B8DB31800FE4B24 /* DecibelMeter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C9160E1B8DB31800FE4B24 /* DecibelMeter.swift */; };
+		44C916121B8DB31800FE4B24 /* FileIO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C9160F1B8DB31800FE4B24 /* FileIO.swift */; };
+		44C916AD1B8DB42C00FE4B24 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44C916AC1B8DB42C00FE4B24 /* AVFoundation.framework */; };
+		44C916AF1B8DB43A00FE4B24 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44C916AE1B8DB43A00FE4B24 /* CoreLocation.framework */; };
+		44C916B11B8DB44000FE4B24 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44C916B01B8DB44000FE4B24 /* MapKit.framework */; };
+		44C916B31B8DB83600FE4B24 /* GraphViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C916B21B8DB83600FE4B24 /* GraphViewController.swift */; };
+		44C916B51B8DB87200FE4B24 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C916B41B8DB87200FE4B24 /* MapViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,13 +37,21 @@
 		44C915E01B8DB04D00FE4B24 /* iOS-AirCasting.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iOS-AirCasting.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		44C915E41B8DB04D00FE4B24 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		44C915E51B8DB04D00FE4B24 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		44C915E71B8DB04D00FE4B24 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		44C915EA1B8DB04D00FE4B24 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		44C915EC1B8DB04D00FE4B24 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		44C915EF1B8DB04D00FE4B24 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		44C915F51B8DB04D00FE4B24 /* iOS-AirCastingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "iOS-AirCastingTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		44C915FA1B8DB04D00FE4B24 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		44C915FB1B8DB04D00FE4B24 /* iOS_AirCastingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOS_AirCastingTests.swift; sourceTree = "<group>"; };
+		44C916071B8DB28200FE4B24 /* DashboardController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardController.swift; sourceTree = "<group>"; };
+		44C9160D1B8DB31800FE4B24 /* BackgroundCustomization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackgroundCustomization.swift; sourceTree = "<group>"; };
+		44C9160E1B8DB31800FE4B24 /* DecibelMeter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DecibelMeter.swift; sourceTree = "<group>"; };
+		44C9160F1B8DB31800FE4B24 /* FileIO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileIO.swift; sourceTree = "<group>"; };
+		44C916AC1B8DB42C00FE4B24 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		44C916AE1B8DB43A00FE4B24 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		44C916B01B8DB44000FE4B24 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		44C916B21B8DB83600FE4B24 /* GraphViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphViewController.swift; sourceTree = "<group>"; };
+		44C916B41B8DB87200FE4B24 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,6 +59,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				44C916B11B8DB44000FE4B24 /* MapKit.framework in Frameworks */,
+				44C916AF1B8DB43A00FE4B24 /* CoreLocation.framework in Frameworks */,
+				44C916AD1B8DB42C00FE4B24 /* AVFoundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -59,6 +78,9 @@
 		44C915D71B8DB04D00FE4B24 = {
 			isa = PBXGroup;
 			children = (
+				44C916B01B8DB44000FE4B24 /* MapKit.framework */,
+				44C916AE1B8DB43A00FE4B24 /* CoreLocation.framework */,
+				44C916AC1B8DB42C00FE4B24 /* AVFoundation.framework */,
 				44C915E21B8DB04D00FE4B24 /* iOS-AirCasting */,
 				44C915F81B8DB04D00FE4B24 /* iOS-AirCastingTests */,
 				44C915E11B8DB04D00FE4B24 /* Products */,
@@ -77,8 +99,10 @@
 		44C915E21B8DB04D00FE4B24 /* iOS-AirCasting */ = {
 			isa = PBXGroup;
 			children = (
+				44C916B21B8DB83600FE4B24 /* GraphViewController.swift */,
+				44C916B41B8DB87200FE4B24 /* MapViewController.swift */,
 				44C915E51B8DB04D00FE4B24 /* AppDelegate.swift */,
-				44C915E71B8DB04D00FE4B24 /* ViewController.swift */,
+				44C916071B8DB28200FE4B24 /* DashboardController.swift */,
 				44C915E91B8DB04D00FE4B24 /* Main.storyboard */,
 				44C915EC1B8DB04D00FE4B24 /* Images.xcassets */,
 				44C915EE1B8DB04D00FE4B24 /* LaunchScreen.xib */,
@@ -90,6 +114,9 @@
 		44C915E31B8DB04D00FE4B24 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				44C9160D1B8DB31800FE4B24 /* BackgroundCustomization.swift */,
+				44C9160E1B8DB31800FE4B24 /* DecibelMeter.swift */,
+				44C9160F1B8DB31800FE4B24 /* FileIO.swift */,
 				44C915E41B8DB04D00FE4B24 /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -161,6 +188,7 @@
 				TargetAttributes = {
 					44C915DF1B8DB04D00FE4B24 = {
 						CreatedOnToolsVersion = 6.4;
+						DevelopmentTeam = F5NBU4297C;
 					};
 					44C915F41B8DB04D00FE4B24 = {
 						CreatedOnToolsVersion = 6.4;
@@ -212,8 +240,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				44C915E81B8DB04D00FE4B24 /* ViewController.swift in Sources */,
+				44C916081B8DB28200FE4B24 /* DashboardController.swift in Sources */,
 				44C915E61B8DB04D00FE4B24 /* AppDelegate.swift in Sources */,
+				44C916121B8DB31800FE4B24 /* FileIO.swift in Sources */,
+				44C916B31B8DB83600FE4B24 /* GraphViewController.swift in Sources */,
+				44C916111B8DB31800FE4B24 /* DecibelMeter.swift in Sources */,
+				44C916101B8DB31800FE4B24 /* BackgroundCustomization.swift in Sources */,
+				44C916B51B8DB87200FE4B24 /* MapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -342,9 +375,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = "iOS-AirCasting/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "iOS-AirCasting";
 			};
 			name = Debug;
 		};
@@ -352,9 +386,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = "iOS-AirCasting/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "iOS-AirCasting";
 			};
 			name = Release;
 		};
@@ -372,7 +407,7 @@
 				);
 				INFOPLIST_FILE = "iOS-AirCastingTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "iOS-AirCastingTests";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/iOS-AirCasting.app/iOS-AirCasting";
 			};
 			name = Debug;
@@ -387,7 +422,7 @@
 				);
 				INFOPLIST_FILE = "iOS-AirCastingTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "iOS-AirCastingTests";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/iOS-AirCasting.app/iOS-AirCasting";
 			};
 			name = Release;
@@ -411,6 +446,7 @@
 				44C916011B8DB04D00FE4B24 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		44C916021B8DB04D00FE4B24 /* Build configuration list for PBXNativeTarget "iOS-AirCastingTests" */ = {
 			isa = XCConfigurationList;
@@ -419,6 +455,7 @@
 				44C916041B8DB04D00FE4B24 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
