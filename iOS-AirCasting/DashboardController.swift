@@ -16,10 +16,27 @@ class DashboardController: UIViewController {
     //    var audioRecorder:AVAudioRecorder!
     var decibel:Float = 0
     var timer = NSTimer()
+    var timerDB = NSTimer()
+    var recording: Bool = false
+    
+    let dbManager = DBManager()
+    
+    var uuid: NSObject = NSObject()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        println("IN APP")
+        //Creating SQLlite database
+        if !dbManager.createDB() {
+            println("AirCasting: Error in creating DB")
+            exit(EXIT_FAILURE)
+        } else{
+            println("AirCasting: DB Created succcessfully")
+        }
+        
         timer.invalidate()
         timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: Selector("updateLabel"), userInfo: nil, repeats: true)
     }
@@ -34,7 +51,32 @@ class DashboardController: UIViewController {
         decibel = objDecibel.recordDecibels()
         
         decibelLabel.text = "\(Int(round(decibel)))"
+       
+        
     }
+    
+    @IBAction func startRecording(sender: UIButton) {
+        
+        uuid = NSUUID().UUIDString
+        recording = true
+//        updateMeasurement()
+        if recording{
+            timerDB = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: Selector("updateMeasurement"), userInfo: nil, repeats: true)
+        } else{
+            timerDB.invalidate()
+        }
+        
+    }
+    
+    func updateMeasurement(){
+        //Inserting value into database
+        if !dbManager.insertMeasurements("\(uuid)", device: "phone_microphone", decibels: decibel) {
+            println("AirCasting: Error in inserting measurements into database")
+        } else{
+            println("AirCasting: Successfully inserted measurements into database")
+        }
+    }
+    
     
     //    func recordDecibels() -> Float{
     //

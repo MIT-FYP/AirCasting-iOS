@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		44AE0E351BB93C3300F90FD5 /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 44AE0E2B1BB93C3300F90FD5 /* FMDatabase.m */; };
+		44AE0E361BB93C3300F90FD5 /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 44AE0E2D1BB93C3300F90FD5 /* FMDatabaseAdditions.m */; };
+		44AE0E371BB93C3300F90FD5 /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = 44AE0E2F1BB93C3300F90FD5 /* FMDatabasePool.m */; };
+		44AE0E381BB93C3300F90FD5 /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 44AE0E311BB93C3300F90FD5 /* FMDatabaseQueue.m */; };
+		44AE0E391BB93C3300F90FD5 /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 44AE0E341BB93C3300F90FD5 /* FMResultSet.m */; };
+		44AE0E3B1BB959DA00F90FD5 /* DBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44AE0E3A1BB959DA00F90FD5 /* DBManager.swift */; };
+		44AE0E3D1BB9603E00F90FD5 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 44AE0E3C1BB9603E00F90FD5 /* libsqlite3.dylib */; };
 		44C915E61B8DB04D00FE4B24 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C915E51B8DB04D00FE4B24 /* AppDelegate.swift */; };
 		44C915EB1B8DB04D00FE4B24 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 44C915E91B8DB04D00FE4B24 /* Main.storyboard */; };
 		44C915ED1B8DB04D00FE4B24 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 44C915EC1B8DB04D00FE4B24 /* Images.xcassets */; };
@@ -34,6 +41,20 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		44AE0E291BB93C3300F90FD5 /* iOS-AirCasting-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "iOS-AirCasting-Bridging-Header.h"; sourceTree = "<group>"; };
+		44AE0E2A1BB93C3300F90FD5 /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabase.h; sourceTree = "<group>"; };
+		44AE0E2B1BB93C3300F90FD5 /* FMDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabase.m; sourceTree = "<group>"; };
+		44AE0E2C1BB93C3300F90FD5 /* FMDatabaseAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseAdditions.h; sourceTree = "<group>"; };
+		44AE0E2D1BB93C3300F90FD5 /* FMDatabaseAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabaseAdditions.m; sourceTree = "<group>"; };
+		44AE0E2E1BB93C3300F90FD5 /* FMDatabasePool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabasePool.h; sourceTree = "<group>"; };
+		44AE0E2F1BB93C3300F90FD5 /* FMDatabasePool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabasePool.m; sourceTree = "<group>"; };
+		44AE0E301BB93C3300F90FD5 /* FMDatabaseQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseQueue.h; sourceTree = "<group>"; };
+		44AE0E311BB93C3300F90FD5 /* FMDatabaseQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabaseQueue.m; sourceTree = "<group>"; };
+		44AE0E321BB93C3300F90FD5 /* FMDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDB.h; sourceTree = "<group>"; };
+		44AE0E331BB93C3300F90FD5 /* FMResultSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMResultSet.h; sourceTree = "<group>"; };
+		44AE0E341BB93C3300F90FD5 /* FMResultSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMResultSet.m; sourceTree = "<group>"; };
+		44AE0E3A1BB959DA00F90FD5 /* DBManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DBManager.swift; sourceTree = "<group>"; };
+		44AE0E3C1BB9603E00F90FD5 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		44C915E01B8DB04D00FE4B24 /* iOS-AirCasting.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iOS-AirCasting.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		44C915E41B8DB04D00FE4B24 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		44C915E51B8DB04D00FE4B24 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -59,6 +80,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				44AE0E3D1BB9603E00F90FD5 /* libsqlite3.dylib in Frameworks */,
 				44C916B11B8DB44000FE4B24 /* MapKit.framework in Frameworks */,
 				44C916AF1B8DB43A00FE4B24 /* CoreLocation.framework in Frameworks */,
 				44C916AD1B8DB42C00FE4B24 /* AVFoundation.framework in Frameworks */,
@@ -78,6 +100,7 @@
 		44C915D71B8DB04D00FE4B24 = {
 			isa = PBXGroup;
 			children = (
+				44AE0E3C1BB9603E00F90FD5 /* libsqlite3.dylib */,
 				44C916B01B8DB44000FE4B24 /* MapKit.framework */,
 				44C916AE1B8DB43A00FE4B24 /* CoreLocation.framework */,
 				44C916AC1B8DB42C00FE4B24 /* AVFoundation.framework */,
@@ -114,10 +137,23 @@
 		44C915E31B8DB04D00FE4B24 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				44AE0E3A1BB959DA00F90FD5 /* DBManager.swift */,
 				44C9160D1B8DB31800FE4B24 /* BackgroundCustomization.swift */,
 				44C9160E1B8DB31800FE4B24 /* DecibelMeter.swift */,
 				44C9160F1B8DB31800FE4B24 /* FileIO.swift */,
+				44AE0E2A1BB93C3300F90FD5 /* FMDatabase.h */,
+				44AE0E2B1BB93C3300F90FD5 /* FMDatabase.m */,
+				44AE0E2C1BB93C3300F90FD5 /* FMDatabaseAdditions.h */,
+				44AE0E2D1BB93C3300F90FD5 /* FMDatabaseAdditions.m */,
+				44AE0E2E1BB93C3300F90FD5 /* FMDatabasePool.h */,
+				44AE0E2F1BB93C3300F90FD5 /* FMDatabasePool.m */,
+				44AE0E301BB93C3300F90FD5 /* FMDatabaseQueue.h */,
+				44AE0E311BB93C3300F90FD5 /* FMDatabaseQueue.m */,
+				44AE0E321BB93C3300F90FD5 /* FMDB.h */,
+				44AE0E331BB93C3300F90FD5 /* FMResultSet.h */,
+				44AE0E341BB93C3300F90FD5 /* FMResultSet.m */,
 				44C915E41B8DB04D00FE4B24 /* Info.plist */,
+				44AE0E291BB93C3300F90FD5 /* iOS-AirCasting-Bridging-Header.h */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -243,10 +279,16 @@
 				44C916081B8DB28200FE4B24 /* DashboardController.swift in Sources */,
 				44C915E61B8DB04D00FE4B24 /* AppDelegate.swift in Sources */,
 				44C916121B8DB31800FE4B24 /* FileIO.swift in Sources */,
+				44AE0E3B1BB959DA00F90FD5 /* DBManager.swift in Sources */,
 				44C916B31B8DB83600FE4B24 /* GraphViewController.swift in Sources */,
 				44C916111B8DB31800FE4B24 /* DecibelMeter.swift in Sources */,
+				44AE0E361BB93C3300F90FD5 /* FMDatabaseAdditions.m in Sources */,
+				44AE0E391BB93C3300F90FD5 /* FMResultSet.m in Sources */,
 				44C916101B8DB31800FE4B24 /* BackgroundCustomization.swift in Sources */,
+				44AE0E371BB93C3300F90FD5 /* FMDatabasePool.m in Sources */,
+				44AE0E381BB93C3300F90FD5 /* FMDatabaseQueue.m in Sources */,
 				44C916B51B8DB87200FE4B24 /* MapViewController.swift in Sources */,
+				44AE0E351BB93C3300F90FD5 /* FMDatabase.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -375,10 +417,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = "iOS-AirCasting/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "iOS-AirCasting";
+				SWIFT_OBJC_BRIDGING_HEADER = "iOS-AirCasting/iOS-AirCasting-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -386,10 +431,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = "iOS-AirCasting/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "iOS-AirCasting";
+				SWIFT_OBJC_BRIDGING_HEADER = "iOS-AirCasting/iOS-AirCasting-Bridging-Header.h";
 			};
 			name = Release;
 		};
