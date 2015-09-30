@@ -29,6 +29,28 @@ class MapViewController: UIViewController,CLLocationManagerDelegate, MKMapViewDe
     @IBOutlet weak var greenTextField: UITextField!
     @IBOutlet weak var blackTextField: UITextField!
     
+    @IBOutlet weak var orangeSlider: UISlider!
+    @IBOutlet weak var yellowSlider: UISlider!
+    @IBOutlet weak var greenSlider: UISlider!
+    
+    @IBOutlet weak var avgDecibelLabel: UILabel!
+    @IBOutlet weak var peakDecibelLabel: UILabel!
+    
+    
+    // Legend bar text fields
+    
+    @IBOutlet weak var mainThreshold1: UILabel!
+    @IBOutlet weak var mainThreshold2: UILabel!
+    @IBOutlet weak var mainThreshold3: UILabel!
+    @IBOutlet weak var mainThreshold4: UILabel!
+    @IBOutlet weak var mainThreshold5: UILabel!
+    @IBOutlet weak var mainThreshold6: UILabel!
+    @IBOutlet weak var mainThreshold7: UILabel!
+    @IBOutlet weak var mainThreshold8: UILabel!
+    @IBOutlet weak var mainThreshold9: UILabel!
+    @IBOutlet weak var mainThreshold10: UILabel!
+
+    
     // Variables for background
     
     var redLegendView = UIImageView(image: UIImage(named: "redLegend"))
@@ -40,7 +62,17 @@ class MapViewController: UIViewController,CLLocationManagerDelegate, MKMapViewDe
     var startCordY: CGFloat = 70
     
     var decibel:Float = 0
+    var avgDecibel: Float = 0
+    var sumDecibel: Float = 0
+    var peakDecibel: Float = 0
+    var measurementCount: Float = 0
+    
     var timer = NSTimer()
+    var timerDB = NSTimer()
+    
+    let dbManager = DBManager()
+    
+    var uuid: NSObject = NSObject()
     
     var manager:CLLocationManager!
     var myLocations: [CLLocation] = []
@@ -50,6 +82,9 @@ class MapViewController: UIViewController,CLLocationManagerDelegate, MKMapViewDe
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        println("viewDidLoad: App launch")
+        
         
         updateLegendMenu.hidden = true
         redTextField.delegate = self
@@ -70,8 +105,36 @@ class MapViewController: UIViewController,CLLocationManagerDelegate, MKMapViewDe
         mapView.mapType = MKMapType.Standard
         mapView.showsUserLocation = true
         
+        //Creating SQLlite database
+        if !dbManager.createDB() {
+            println("AirCasting: Error in creating DB")
+            exit(EXIT_FAILURE)
+        } else{
+            println("AirCasting: DB Created succcessfully")
+        }
+        
         timer.invalidate()
         timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: Selector("updateLabel"), userInfo: nil, repeats: true)
+    }
+    
+    @IBAction func updateTextFields(sender: UISlider) {
+        
+        switch sender.tag {
+        case 1: orangeTextField.text = "\(Int(orangeSlider.value))"
+        case 2: yellowTextField.text = "\(Int(yellowSlider.value))"
+        case 3: greenTextField.text = "\(Int(greenSlider.value))"
+        default: println("Invalid Slider error - GraphView")
+        }
+    }
+    
+    @IBAction func endSliderUpdate(sender: UISlider) {
+        
+        updateThresholds()
+    }
+    
+    @IBAction func endTextUpdate(sender: UITextField) {
+        
+        updateThresholds()
     }
     
     @IBAction func displayLegendMenu(sender: UITapGestureRecognizer) {
@@ -79,9 +142,12 @@ class MapViewController: UIViewController,CLLocationManagerDelegate, MKMapViewDe
         updateLegendMenu.hidden = false
         
     }
+    
     func locationManager(manager:CLLocationManager, didUpdateLocations locations:[AnyObject]) {
 //        mapLabel.text = "\(locations[0])"
         myLocations.append(locations[0] as! CLLocation)
+        
+        view.sendSubviewToBack(mapView)
         
         let spanX = 0.007
         let spanY = 0.007
@@ -122,12 +188,6 @@ class MapViewController: UIViewController,CLLocationManagerDelegate, MKMapViewDe
         
     }
     
-    func updateLabel(){
-        var objDecibel = DecibelMeter()
-        decibel = objDecibel.recordDecibels()
-        
-        decibelLabel.text = "\(Int(round(decibel)))"
-    }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         textField.resignFirstResponder()
@@ -166,6 +226,39 @@ class MapViewController: UIViewController,CLLocationManagerDelegate, MKMapViewDe
 //        
 //    }
     
+    func updateThresholds(){
+        
+        println("redTextField.text: \(redTextField.text)")
+        println("orangeTextField: \(orangeTextField.text)")
+        println("yellowTextField: \(yellowTextField.text)")
+        println("greenTextField: \(greenTextField.text)")
+        println("blackTextField: \(blackTextField.text)")
+        
+        if redTextField.text.toInt() < orangeTextField.text.toInt() {
+            orangeTextField.text = String(redTextField.text.toInt()! - 1)
+        }
+        if orangeTextField.text.toInt() < yellowTextField.text.toInt() {
+            yellowTextField.text = String(orangeTextField.text.toInt()! - 1)
+        }
+        if yellowTextField.text.toInt() < greenTextField.text.toInt() {
+            greenTextField.text = String(yellowTextField.text.toInt()! - 1)
+        }
+        if greenTextField.text.toInt() < blackTextField.text.toInt() {
+            blackTextField.text = String(greenTextField.text.toInt()! - 1)
+        }
+        
+        //Set minimums and maximums for sliders
+        setSliderMinMax((redTextField.text as NSString).floatValue,
+            minimum: (blackTextField.text as NSString).floatValue)
+        
+        orangeSlider.value = (orangeTextField.text as NSString).floatValue
+        yellowSlider.value = (yellowTextField.text as NSString).floatValue
+        greenSlider.value = (greenTextField.text as NSString).floatValue
+        
+        updateThresholdLabels()
+        
+    }
+    
     @IBAction func toDashboard(sender: UIButton) {
         
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
@@ -192,7 +285,7 @@ class MapViewController: UIViewController,CLLocationManagerDelegate, MKMapViewDe
             
             if arrHt.count == 9 {
                 
-                println("array size = 9")
+//                println("array size = 9")
                 
                 var redHt = NSString(string: arrHt[0])
                 var orangeHt = NSString(string: arrHt[1])
@@ -209,23 +302,23 @@ class MapViewController: UIViewController,CLLocationManagerDelegate, MKMapViewDe
                 yellowTextField.text = yellowTxt as String
                 greenTextField.text = greenTxt as String
                 blackTextField.text = blackTxt as String
+                
+                orangeSlider.value = orangeTxt.floatValue
+                yellowSlider.value = yellowTxt.floatValue
+                greenSlider.value = greenTxt.floatValue
+                
+                //Set minimums and maximums for sliders
+                setSliderMinMax((redTextField.text as NSString).floatValue,
+                    minimum: (blackTextField.text as NSString).floatValue)
+                
+                updateThresholdLabels()
             } else{
                 println("bgValues.txt File corrupt")
             }
-            
-            
-            
-//            setBackground(redHt.doubleValue, orangeHt: orangeHt.doubleValue, yellowHt: yellowHt.doubleValue, greenHt: greenHt.doubleValue)
-            
-//            println("RH: \(redHt)")
-//            println("OH: \(orangeHt)")
-//            println("YH: \(yellowHt)")
-//            println("GH: \(greenHt)")
         }
     }
     
     func restoreDefault(){
-        
         
         var redHt = 0.25
         var orangeHt = 0.125
@@ -237,10 +330,57 @@ class MapViewController: UIViewController,CLLocationManagerDelegate, MKMapViewDe
         var greenTxt = 60
         var blackTxt = 20
         
+        redTextField.text = "\(redTxt)"
+        orangeTextField.text = "\(orangeTxt)"
+        yellowTextField.text = "\(yellowTxt)"
+        greenTextField.text = "\(greenTxt)"
+        blackTextField.text = "\(blackTxt)"
+        
+        orangeSlider.value = Float(orangeTxt)
+        yellowSlider.value = Float(yellowTxt)
+        greenSlider.value = Float(greenTxt)
+        
+        //Set minimums and maximums for sliders
+        setSliderMinMax((redTextField.text as NSString).floatValue,
+            minimum: (blackTextField.text as NSString).floatValue)
+        
+        updateThresholdLabels()
+        
         var storeHt = BackgroundCustomization()
         storeHt.storeSetting(redHt, orangeHt: orangeHt, yellowHt: yellowHt, greenHt: greenHt, redTxt: redTxt, orangeTxt: orangeTxt, yellowTxt: yellowTxt, greenTxt: greenTxt, blackTxt: blackTxt)
+
+    }
+    
+    //Set minimums and maximums for sliders
+    func setSliderMinMax(maximum: Float, minimum: Float){
         
-//        setBackground(redHt, orangeHt: orangeHt, yellowHt: yellowHt, greenHt: greenHt)
+        //        println("maximum: \(maximum) minimum: \(minimum)")
+        orangeSlider.maximumValue = maximum
+        orangeSlider.minimumValue = minimum
+        
+        yellowSlider.maximumValue = maximum
+        yellowSlider.minimumValue = minimum
+        
+        greenSlider.maximumValue = maximum
+        greenSlider.minimumValue = minimum
+        
+    }
+    
+    func updateThresholdLabels(){
+        
+        mainThreshold1.text = blackTextField.text
+        mainThreshold2.text = greenTextField.text
+        mainThreshold3.text = yellowTextField.text
+        mainThreshold4.text = orangeTextField.text
+        mainThreshold5.text = redTextField.text
+        
+        mainThreshold6.text = blackTextField.text
+        mainThreshold7.text = greenTextField.text
+        mainThreshold8.text = yellowTextField.text
+        mainThreshold9.text = orangeTextField.text
+        mainThreshold10.text = redTextField.text
+        
+        
     }
     
     //    @IBAction func display(sender: UIButton) {
@@ -251,5 +391,58 @@ class MapViewController: UIViewController,CLLocationManagerDelegate, MKMapViewDe
     //    override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
     //        sensorMenu.hidden = true
     //    }
+    
+    
+    @IBAction func startRecording(sender: UIButton) {
+        
+        if sender.titleLabel?.text == "Start Recording"{
+            uuid = NSUUID().UUIDString
+            //            println(uuid)
+            sender.setTitle("Stop Recording", forState: UIControlState.Normal)
+            sender.setImage(UIImage(named: "StopRecord"), forState: UIControlState.Normal)
+            
+            //Initiate the timer to start storing the measurements
+            timerDB = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: Selector("updateMeasurement"), userInfo: nil, repeats: true)
+            
+        } else{
+            sender.setTitle("Start Recording", forState: UIControlState.Normal)
+            sender.setImage(UIImage(named: "StartRecord"), forState: UIControlState.Normal)
+            
+            //Terminate the timer and stop storing measurements
+            timerDB.invalidate()
+        }
+    }
+    
+    func updateLabel(){
+        var objDecibel = DecibelMeter()
+        decibel = objDecibel.recordDecibels()
+        
+        decibelLabel.text = "\(Int(round(decibel)))"
+    }
+    
+    func updateMeasurement(){
+        
+        sumDecibel = sumDecibel + decibel
+        measurementCount++
+        
+        avgDecibel = sumDecibel / measurementCount
+        
+        if decibel > peakDecibel {
+            peakDecibel = decibel
+        }
+        
+        avgDecibelLabel.text = "\(Int(round(avgDecibel)))"
+        peakDecibelLabel.text = "\(Int(round(peakDecibel)))"
+        
+        println("Avg decibel = \(avgDecibel)")
+        println("Peak decibel = \(peakDecibel)")
+        
+        //Inserting value into database
+        if !dbManager.insertMeasurements("\(uuid)", device: "phone_microphone", decibels: decibel) {
+            println("AirCasting: Error in inserting measurements into database")
+        } else{
+            println("AirCasting: Successfully inserted measurements into database")
+        }
+    }
     
 }

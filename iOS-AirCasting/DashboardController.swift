@@ -12,12 +12,18 @@ import AVFoundation
 class DashboardController: UIViewController {
     
     @IBOutlet weak var decibelLabel: UILabel!
+    @IBOutlet weak var avgDecibelLabel: UILabel!
+    @IBOutlet weak var peakDecibelLabel: UILabel!
     
     //    var audioRecorder:AVAudioRecorder!
     var decibel:Float = 0
+    var avgDecibel: Float = 0
+    var sumDecibel: Float = 0
+    var peakDecibel: Float = 0
+    var measurementCount: Float = 0
+    
     var timer = NSTimer()
     var timerDB = NSTimer()
-    var recording: Bool = false
     
     let dbManager = DBManager()
     
@@ -28,7 +34,7 @@ class DashboardController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        println("IN APP")
+        println("viewDidLoad: App launch")
         //Creating SQLlite database
         if !dbManager.createDB() {
             println("AirCasting: Error in creating DB")
@@ -51,24 +57,47 @@ class DashboardController: UIViewController {
         decibel = objDecibel.recordDecibels()
         
         decibelLabel.text = "\(Int(round(decibel)))"
-       
-        
     }
+    
     
     @IBAction func startRecording(sender: UIButton) {
         
-        uuid = NSUUID().UUIDString
-        recording = true
-//        updateMeasurement()
-        if recording{
+        if sender.titleLabel?.text == "Start Recording"{
+            uuid = NSUUID().UUIDString
+//            println(uuid)
+            sender.setTitle("Stop Recording", forState: UIControlState.Normal)
+            sender.setImage(UIImage(named: "StopRecord"), forState: UIControlState.Normal)
+            
+            //Initiate the timer to start storing the measurements
             timerDB = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: Selector("updateMeasurement"), userInfo: nil, repeats: true)
+            
         } else{
+            sender.setTitle("Start Recording", forState: UIControlState.Normal)
+            sender.setImage(UIImage(named: "StartRecord"), forState: UIControlState.Normal)
+            
+            //Terminate the timer and stop storing measurements
             timerDB.invalidate()
         }
         
     }
     
     func updateMeasurement(){
+        
+        sumDecibel = sumDecibel + decibel
+        measurementCount++
+        
+        avgDecibel = sumDecibel / measurementCount
+        
+        if decibel > peakDecibel {
+            peakDecibel = decibel
+        }
+        
+        avgDecibelLabel.text = "\(Int(round(avgDecibel)))"
+        peakDecibelLabel.text = "\(Int(round(peakDecibel)))"
+        
+        println("Avg decibel = \(avgDecibel)")
+        println("Peak decibel = \(peakDecibel)")
+        
         //Inserting value into database
         if !dbManager.insertMeasurements("\(uuid)", device: "phone_microphone", decibels: decibel) {
             println("AirCasting: Error in inserting measurements into database")
@@ -77,47 +106,7 @@ class DashboardController: UIViewController {
         }
     }
     
-    
-    //    func recordDecibels() -> Float{
-    //
-    //        var audioSession:AVAudioSession = AVAudioSession.sharedInstance()
-    //        audioSession.setCategory(AVAudioSessionCategoryPlayAndRecord, error: nil)
-    //        audioSession.setActive(true, error: nil)
-    //
-    //        var documents: AnyObject = NSSearchPathForDirectoriesInDomains( NSSearchPathDirectory.DocumentDirectory,  NSSearchPathDomainMask.UserDomainMask, true)[0]
-    //        var str =  documents.stringByAppendingPathComponent("recordTest.caf")
-    //        var url = NSURL.fileURLWithPath(str as String)
-    //
-    //        var recordSettings = [AVFormatIDKey:kAudioFormatAppleIMA4,
-    //            AVSampleRateKey:44100.0,
-    //            AVNumberOfChannelsKey:1,
-    //            AVEncoderBitRateKey:16,
-    //            //            AVLinearPCMBitDepthKey:16,
-    //            AVEncoderAudioQualityKey:AVAudioQuality.Max.rawValue,
-    //            //            AVLinearPCMIsBigEndianKey:false,
-    //            //            AVLinearPCMIsFloatKey:false
-    //
-    //        ]
-    //
-    //        //        println("url : \(url)")
-    //        var error: NSError?
-    //
-    //        audioRecorder = AVAudioRecorder(URL:url, settings: recordSettings as [NSObject : AnyObject] , error: &error)
-    //        if let e = error {
-    //            println(e.localizedDescription)
-    //        } else {
-    //
-    //            audioRecorder.meteringEnabled = true
-    //            audioRecorder.record()
-    //            audioRecorder.updateMeters()
-    //            decibel = audioRecorder.peakPowerForChannel(0)
-    //            decibel += 120
-    //            println("DB = \(decibel)")
-    //
-    //        }
-    //        return decibel
-    //    }
-    
+    //Navigate to Map Controller
     @IBAction func toMap(sender: UIButton) {
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
         
@@ -128,6 +117,7 @@ class DashboardController: UIViewController {
         self.presentViewController(mapView,  animated: true, completion: nil)
     }
     
+    //Navigate to Graph Controller
     @IBAction func toGraph(sender: UIButton) {
         
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)

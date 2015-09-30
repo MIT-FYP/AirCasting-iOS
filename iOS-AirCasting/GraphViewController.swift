@@ -15,14 +15,11 @@ class GraphViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var updateLegendMenu: UIView!
     
     //Clocks
-    
     @IBOutlet weak var startClock: UILabel!
     @IBOutlet weak var finishClock: UILabel!
     
     
     // Text Fields
-    
-   
     @IBOutlet weak var redTextField: UITextField!
     @IBOutlet weak var orangeTextField: UITextField!
     @IBOutlet weak var yellowTextField: UITextField!
@@ -33,57 +30,59 @@ class GraphViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var orangeSlider: UISlider!
     @IBOutlet weak var yellowSlider: UISlider!
     @IBOutlet weak var greenSlider: UISlider!
-    // Variables for background
     
+    // Legend bar text fields
+    
+    @IBOutlet weak var mainThreshold1: UILabel!
+    @IBOutlet weak var mainThreshold2: UILabel!
+    @IBOutlet weak var mainThreshold3: UILabel!
+    @IBOutlet weak var mainThreshold4: UILabel!
+    @IBOutlet weak var mainThreshold5: UILabel!
+    @IBOutlet weak var mainThreshold6: UILabel!
+    @IBOutlet weak var mainThreshold7: UILabel!
+    @IBOutlet weak var mainThreshold8: UILabel!
+    @IBOutlet weak var mainThreshold9: UILabel!
+    @IBOutlet weak var mainThreshold10: UILabel!
+    
+    
+    
+    
+    
+    
+    // Variables for background
     var redLegendView = UIImageView(image: UIImage(named: "redLegend"))
     var orangeLegendView = UIImageView(image: UIImage(named: "orangeLegend"))
     var yellowLegendView = UIImageView(image: UIImage(named: "yellowLegend"))
     var greenLegendView = UIImageView(image: UIImage(named: "greenLegend"))
     
     var startCordX: CGFloat = 0
-    var startCordY: CGFloat = 70
-    
-    //    var redLegendWidth: Int = 0
-    //    var redLegendHeight: Int = 0
-    //
-    //    var orangeLegendWidth: Int = 0
-    //    var orangeLegendHeight: Int = 0
-    //
-    //    var yellowLegendWidth: Int = 0
-    //    var yellowLegendHeight: Int = 0
-    //
-    //    var greenLegendWidth: Int = 0
-    //    var greenLegendHeight: Int = 0
-    //
-//    var legendWidth = 0
-//    var legendHeight = 0
-    
-    
-    // Finshed
+    var startCordY: CGFloat = 52
+
     
     //Object for Calculating Height
     var objBgHeight = BackgroundCustomization()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         updateLegendMenu.hidden = true
         
         redTextField.delegate = self
         orangeTextField.delegate = self
         yellowTextField.delegate = self
         greenTextField.delegate = self
-        
-        //        defaultBackground()
+
+        //Populate saved values from file
         updateBackground()
         
+        //Initiate timer to display clocks
         NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: ("updateClocks"), userInfo: nil, repeats: true)
         
     }
+    
     @IBAction func saveChangesButton(sender: UIButton) {
-        
-        
-        
-        //        var bgHeights: [Int] = []
+
+        //Calculate the heights of background row based on threshold values set in menu
         let bgHeights = objBgHeight.calculateHeights(redTextField.text.toInt()!, orange: orangeTextField.text.toInt()!, yellow: yellowTextField.text.toInt()!, green: greenTextField.text.toInt()!, black: blackTextField.text.toInt()!)
         
         println("ht: \(bgHeights.redHt)")
@@ -91,16 +90,19 @@ class GraphViewController: UIViewController, UITextFieldDelegate {
         println("ht: \(bgHeights.yellowHt)")
         println("ht: \(bgHeights.greenHt)")
         
+        //Draw background
         setBackground(bgHeights.redHt, orangeHt: bgHeights.orangeHt, yellowHt: bgHeights.yellowHt, greenHt: bgHeights.greenHt)
+        
+        //Hide menu
         updateLegendMenu.hidden = true
-        //        updateBackground()
         
     }
     
     @IBAction func restoreDefaultButton(sender: UIButton) {
         updateLegendMenu.hidden = true
+        
+        //Set default values
         restoreDefault()
-        //        defaultBackground()
     }
     
     @IBAction func displayLegendMenu(sender: UITapGestureRecognizer) {
@@ -128,15 +130,15 @@ class GraphViewController: UIViewController, UITextFieldDelegate {
     }
     
     override func didRotateFromInterfaceOrientation(fromInterfaceOrientation: UIInterfaceOrientation) {
-        
+        //Draw again when orientation changes
         updateBackground()
         
     }
     
-    
+    //Update textfield when slider value changes
     @IBAction func updateTextFields(sender: UISlider) {
        
-        println("2: \(sender.tag)")
+//        println("2: \(sender.tag)")
         
         switch sender.tag {
         case 1: orangeTextField.text = "\(Int(orangeSlider.value))"
@@ -146,9 +148,54 @@ class GraphViewController: UIViewController, UITextFieldDelegate {
         }
         
     }
+
+    //Update slider when textfield changes and update thresholds
+    @IBAction func endTxtUpdate(sender: UITextField) {
+//        println("txt1: \(sender.text)")
+        updateThresholds()
+    }
+    
+    //Update threshold when slider value changes
+    @IBAction func endSliderUpdate(sender: UISlider) {
+//        println("slider1: \(sender.value)")
+        updateThresholds()
+    }
+    
+    //Update threshold values based on changes
+    func updateThresholds(){
+        
+        println("redTextField.text: \(redTextField.text)")
+        println("orangeTextField: \(orangeTextField.text)")
+        println("yellowTextField: \(yellowTextField.text)")
+        println("greenTextField: \(greenTextField.text)")
+        println("blackTextField: \(blackTextField.text)")
+        
+        if redTextField.text.toInt() < orangeTextField.text.toInt() {
+            orangeTextField.text = String(redTextField.text.toInt()! - 1)
+        }
+        if orangeTextField.text.toInt() < yellowTextField.text.toInt() {
+            yellowTextField.text = String(orangeTextField.text.toInt()! - 1)
+        }
+        if yellowTextField.text.toInt() < greenTextField.text.toInt() {
+            greenTextField.text = String(yellowTextField.text.toInt()! - 1)
+        }
+        if greenTextField.text.toInt() < blackTextField.text.toInt() {
+            blackTextField.text = String(greenTextField.text.toInt()! - 1)
+        }
+        
+        //Set minimums and maximums for sliders
+        setSliderMinMax((redTextField.text as NSString).floatValue,
+            minimum: (blackTextField.text as NSString).floatValue)
+        
+        orangeSlider.value = (orangeTextField.text as NSString).floatValue
+        yellowSlider.value = (yellowTextField.text as NSString).floatValue
+        greenSlider.value = (greenTextField.text as NSString).floatValue
+        
+        updateThresholdLabels()
+        
+    }
     
     // Clocks
-    
     func updateClocks()
         
     {
@@ -158,6 +205,112 @@ class GraphViewController: UIViewController, UITextFieldDelegate {
     }
     
     
+    //Retrieve saved values from file
+    func updateBackground(){
+        var objRead = FileIO()
+        
+        var htValues = objRead.readFromDocumentsFile("bgValues.txt")
+        
+        if htValues.lowercaseString.rangeOfString("error") != nil {
+            
+            restoreDefault()
+            
+        } else{
+            
+            var arrHt = split(htValues) {$0 == ","}
+            
+            if arrHt.count == 9 {
+                
+//                println("array size = 9")
+                
+                var redHt = NSString(string: arrHt[0])
+                var orangeHt = NSString(string: arrHt[1])
+                var yellowHt = NSString(string: arrHt[2])
+                var greenHt = NSString(string: arrHt[3])
+                var redTxt = NSString(string: arrHt[4])
+                var orangeTxt = NSString(string: arrHt[5])
+                var yellowTxt = NSString(string: arrHt[6])
+                var greenTxt = NSString(string: arrHt[7])
+                var blackTxt = NSString(string: arrHt[8])
+                
+                redTextField.text = redTxt as String
+                orangeTextField.text = orangeTxt as String
+                yellowTextField.text = yellowTxt as String
+                greenTextField.text = greenTxt as String
+                blackTextField.text = blackTxt as String
+                
+                orangeSlider.value = orangeTxt.floatValue
+                yellowSlider.value = yellowTxt.floatValue
+                greenSlider.value = greenTxt.floatValue
+                
+                //Set minimums and maximums for sliders
+                setSliderMinMax((redTextField.text as NSString).floatValue,
+                    minimum: (blackTextField.text as NSString).floatValue)
+                
+                updateThresholdLabels()
+                
+                setBackground(redHt.doubleValue, orangeHt: orangeHt.doubleValue, yellowHt: yellowHt.doubleValue, greenHt: greenHt.doubleValue)
+            } else{
+                println("GraphView:updatBackground - bgValues.txt File corrupt")
+            }
+
+//            println("RH: \(redHt)")
+//            println("OH: \(orangeHt)")
+//            println("YH: \(yellowHt)")
+//            println("GH: \(greenHt)")
+        }
+    }
+    
+    func restoreDefault(){
+        
+        var redHt = 0.25
+        var orangeHt = 0.125
+        var yellowHt = 0.125
+        var greenHt = 0.5
+        var redTxt = 100
+        var orangeTxt = 80
+        var yellowTxt = 70
+        var greenTxt = 60
+        var blackTxt = 20
+        
+        redTextField.text = "\(redTxt)"
+        orangeTextField.text = "\(orangeTxt)"
+        yellowTextField.text = "\(yellowTxt)"
+        greenTextField.text = "\(greenTxt)"
+        blackTextField.text = "\(blackTxt)"
+        
+        orangeSlider.value = Float(orangeTxt)
+        yellowSlider.value = Float(yellowTxt)
+        greenSlider.value = Float(greenTxt)
+        
+        //Set minimums and maximums for sliders
+        setSliderMinMax((redTextField.text as NSString).floatValue,
+            minimum: (blackTextField.text as NSString).floatValue)
+        
+        updateThresholdLabels()
+        
+        var storeHt = BackgroundCustomization()
+        storeHt.storeSetting(redHt, orangeHt: orangeHt, yellowHt: yellowHt, greenHt: greenHt, redTxt: redTxt, orangeTxt: orangeTxt, yellowTxt: yellowTxt, greenTxt: greenTxt, blackTxt: blackTxt)
+    
+        setBackground(redHt, orangeHt: orangeHt, yellowHt: yellowHt, greenHt: greenHt)
+    }
+    
+    //Set minimums and maximums for sliders
+    func setSliderMinMax(maximum: Float, minimum: Float){
+        
+//        println("maximum: \(maximum) minimum: \(minimum)")
+        orangeSlider.maximumValue = maximum
+        orangeSlider.minimumValue = minimum
+        
+        yellowSlider.maximumValue = maximum
+        yellowSlider.minimumValue = minimum
+        
+        greenSlider.maximumValue = maximum
+        greenSlider.minimumValue = minimum
+        
+    }
+    
+    //Draws the background
     func setBackground(redHt: Double, orangeHt: Double, yellowHt: Double, greenHt: Double){
         
         var legendWidth = view.frame.size.width
@@ -198,70 +351,21 @@ class GraphViewController: UIViewController, UITextFieldDelegate {
         view.sendSubviewToBack(greenLegendView)
     }
     
-    func updateBackground(){
-        var objRead = FileIO()
+    func updateThresholdLabels(){
         
-        var htValues = objRead.readFromDocumentsFile("bgValues.txt")
+        mainThreshold1.text = blackTextField.text
+        mainThreshold2.text = greenTextField.text
+        mainThreshold3.text = yellowTextField.text
+        mainThreshold4.text = orangeTextField.text
+        mainThreshold5.text = redTextField.text
         
-        if htValues.lowercaseString.rangeOfString("error") != nil {
-            
-            restoreDefault()
-            
-        } else{
-            
-            var arrHt = split(htValues) {$0 == ","}
-            
-            if arrHt.count == 9 {
-                
-                println("array size = 9")
-                
-                var redHt = NSString(string: arrHt[0])
-                var orangeHt = NSString(string: arrHt[1])
-                var yellowHt = NSString(string: arrHt[2])
-                var greenHt = NSString(string: arrHt[3])
-                var redTxt = NSString(string: arrHt[4])
-                var orangeTxt = NSString(string: arrHt[5])
-                var yellowTxt = NSString(string: arrHt[6])
-                var greenTxt = NSString(string: arrHt[7])
-                var blackTxt = NSString(string: arrHt[8])
-                
-                redTextField.text = redTxt as String
-                orangeTextField.text = orangeTxt as String
-                yellowTextField.text = yellowTxt as String
-                greenTextField.text = greenTxt as String
-                blackTextField.text = blackTxt as String
-                
-                setBackground(redHt.doubleValue, orangeHt: orangeHt.doubleValue, yellowHt: yellowHt.doubleValue, greenHt: greenHt.doubleValue)
-            } else{
-                println("bgValues.txt File corrupt")
-            }
-
-//            println("RH: \(redHt)")
-//            println("OH: \(orangeHt)")
-//            println("YH: \(yellowHt)")
-//            println("GH: \(greenHt)")
-        }
-    }
-    
-    func restoreDefault(){
+        mainThreshold6.text = blackTextField.text
+        mainThreshold7.text = greenTextField.text
+        mainThreshold8.text = yellowTextField.text
+        mainThreshold9.text = orangeTextField.text
+        mainThreshold10.text = redTextField.text
         
         
-        var redHt = 0.25
-        var orangeHt = 0.125
-        var yellowHt = 0.125
-        var greenHt = 0.5
-        var redTxt = 100
-        var orangeTxt = 80
-        var yellowTxt = 70
-        var greenTxt = 60
-        var blackTxt = 20
-        
-        var storeHt = BackgroundCustomization()
-        storeHt.storeSetting(redHt, orangeHt: orangeHt, yellowHt: yellowHt, greenHt: greenHt, redTxt: redTxt, orangeTxt: orangeTxt, yellowTxt: yellowTxt, greenTxt: greenTxt, blackTxt: blackTxt)
-        
-        
-        
-        setBackground(redHt, orangeHt: orangeHt, yellowHt: yellowHt, greenHt: greenHt)
     }
     
 }
