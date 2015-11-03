@@ -34,10 +34,11 @@
 
 // Begin Bluetooth Scanning
 
-- (void)initializeBLE:(NSString *) device
+//- (void)initializeBLE:(NSString *) device
+- (void)initializeBLE
 {
     self.bluetoothOn = NO;
-    NSLog(@"Discovered service %@", device);
+    //NSLog(@"Discovered service %@", device);
     self.centralManager = [[CBCentralManager alloc] initWithDelegate:self queue:nil];
 }
 

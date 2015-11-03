@@ -17,7 +17,8 @@
 @property NSString *particulateMatter;
 @property NSString *temperature;
 @property NSMutableArray *deviceNames;
-- (void)initializeBLE:(NSString *) device;
+//- (void)initializeBLE:(NSString *) device;
+- (void)initializeBLE;
 
 
 #define SERVICE_UUID        @ "FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0"

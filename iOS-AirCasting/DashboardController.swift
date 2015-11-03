@@ -114,7 +114,7 @@ class DashboardController: UIViewController, CLLocationManagerDelegate {
         
         // Staring BLE
         
-        //DashboardController.bleConnectorObj.initializeBLE()
+        DashboardController.bleConnectorObj.initializeBLE()
         
         //Setup our Location Manager
         manager = CLLocationManager()

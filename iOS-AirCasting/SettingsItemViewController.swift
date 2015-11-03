@@ -211,7 +211,7 @@ class SettingsItemViewController: UIViewController, UITableViewDataSource, UITab
             
             var itemSelected = externalDeviceItems[indexPath.row]
             
-            DashboardController.bleConnectorObj.initializeBLE(itemSelected)
+            //DashboardController.bleConnectorObj.initializeBLE(itemSelected)
             
             let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
             
