@@ -13,6 +13,7 @@ class DecibelMeter {
     
     var audioRecorder:AVAudioRecorder!
     var decibel:Float = 0
+    static var isRecording: Bool = false
     
     func recordDecibels() -> Float{
         

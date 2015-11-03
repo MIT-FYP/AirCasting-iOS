@@ -3,17 +3,17 @@
     {
       "idiom" : "universal",
       "scale" : "1x",
-      "filename" : "Legend Bar@1.png"
+      "filename" : "square-xxl.png"
     },
     {
       "idiom" : "universal",
       "scale" : "2x",
-      "filename" : "Legend Bar@2.png"
+      "filename" : "square-xxl-1.png"
     },
     {
       "idiom" : "universal",
       "scale" : "3x",
-      "filename" : "Legend Bar@3.png"
+      "filename" : "square-xxl-2.png"
     }
   ],
   "info" : {

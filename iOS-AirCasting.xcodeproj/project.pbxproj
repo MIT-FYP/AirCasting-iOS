@@ -28,6 +28,21 @@
 		44C916B11B8DB44000FE4B24 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44C916B01B8DB44000FE4B24 /* MapKit.framework */; };
 		44C916B31B8DB83600FE4B24 /* GraphViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C916B21B8DB83600FE4B24 /* GraphViewController.swift */; };
 		44C916B51B8DB87200FE4B24 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C916B41B8DB87200FE4B24 /* MapViewController.swift */; };
+		44DF6F711BE9329B00847112 /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DF6F701BE9329B00847112 /* Node.swift */; };
+		44DF6F731BE932AB00847112 /* Map.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DF6F721BE932AB00847112 /* Map.swift */; };
+		44DF6F751BE932BD00847112 /* AStarRouting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DF6F741BE932BD00847112 /* AStarRouting.swift */; };
+		C826DFCB1BE33501008B4B0A /* SignedInUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = C826DFCA1BE33501008B4B0A /* SignedInUser.swift */; };
+		C86C4AA81BE1E4E600C00C20 /* SessionsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86C4AA71BE1E4E600C00C20 /* SessionsListViewController.swift */; };
+		C870EC471BE7E46D007D4DA7 /* SessionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C870EC461BE7E46D007D4DA7 /* SessionsViewController.swift */; };
+		C89A16891BC1420B0006955C /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C89A16881BC1420B0006955C /* SettingsViewController.swift */; };
+		C89D292E1BE4811800739BB9 /* DBQueries.swift in Sources */ = {isa = PBXBuildFile; fileRef = C89D292D1BE4811800739BB9 /* DBQueries.swift */; };
+		C8A3831C1BD1FEBB007A14CE /* LineGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A3831B1BD1FEBB007A14CE /* LineGraphView.swift */; };
+		C8AE73CA1BDB3EA8001A4F49 /* SettingsItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8AE73C91BDB3EA8001A4F49 /* SettingsItemViewController.swift */; };
+		C8BA93DA1BD4C39D00FD71BF /* AirCastingBLEController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8BA93D91BD4C39D00FD71BF /* AirCastingBLEController.m */; };
+		C8C5582B1BE1B6A800585A39 /* MapStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8C5582A1BE1B6A800585A39 /* MapStyle.swift */; };
+		C8C5582D1BE1B71300585A39 /* UploadType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8C5582C1BE1B71300585A39 /* UploadType.swift */; };
+		C8E8D1051BE20C9C00E6F5A8 /* RESTServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8E8D1041BE20C9C00E6F5A8 /* RESTServices.swift */; };
+		C8EADAF31BE7BC5900515050 /* BackendServerConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8EADAF21BE7BC5900515050 /* BackendServerConfig.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +88,22 @@
 		44C916B01B8DB44000FE4B24 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		44C916B21B8DB83600FE4B24 /* GraphViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphViewController.swift; sourceTree = "<group>"; };
 		44C916B41B8DB87200FE4B24 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		44DF6F701BE9329B00847112 /* Node.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
+		44DF6F721BE932AB00847112 /* Map.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Map.swift; sourceTree = "<group>"; };
+		44DF6F741BE932BD00847112 /* AStarRouting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AStarRouting.swift; sourceTree = "<group>"; };
+		C826DFCA1BE33501008B4B0A /* SignedInUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignedInUser.swift; sourceTree = "<group>"; };
+		C86C4AA71BE1E4E600C00C20 /* SessionsListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionsListViewController.swift; sourceTree = "<group>"; };
+		C870EC461BE7E46D007D4DA7 /* SessionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionsViewController.swift; sourceTree = "<group>"; };
+		C89A16881BC1420B0006955C /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		C89D292D1BE4811800739BB9 /* DBQueries.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DBQueries.swift; sourceTree = "<group>"; };
+		C8A3831B1BD1FEBB007A14CE /* LineGraphView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineGraphView.swift; sourceTree = "<group>"; };
+		C8AE73C91BDB3EA8001A4F49 /* SettingsItemViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsItemViewController.swift; sourceTree = "<group>"; };
+		C8BA93D81BD4C39D00FD71BF /* AirCastingBLEController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AirCastingBLEController.h; sourceTree = "<group>"; };
+		C8BA93D91BD4C39D00FD71BF /* AirCastingBLEController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AirCastingBLEController.m; sourceTree = "<group>"; };
+		C8C5582A1BE1B6A800585A39 /* MapStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapStyle.swift; sourceTree = "<group>"; };
+		C8C5582C1BE1B71300585A39 /* UploadType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadType.swift; sourceTree = "<group>"; };
+		C8E8D1041BE20C9C00E6F5A8 /* RESTServices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RESTServices.swift; sourceTree = "<group>"; };
+		C8EADAF21BE7BC5900515050 /* BackendServerConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackendServerConfig.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,6 +154,9 @@
 			isa = PBXGroup;
 			children = (
 				44C916B21B8DB83600FE4B24 /* GraphViewController.swift */,
+				44DF6F701BE9329B00847112 /* Node.swift */,
+				44DF6F721BE932AB00847112 /* Map.swift */,
+				44DF6F741BE932BD00847112 /* AStarRouting.swift */,
 				44C916B41B8DB87200FE4B24 /* MapViewController.swift */,
 				44C915E51B8DB04D00FE4B24 /* AppDelegate.swift */,
 				44C916071B8DB28200FE4B24 /* DashboardController.swift */,
@@ -137,10 +171,23 @@
 		44C915E31B8DB04D00FE4B24 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				C89D292D1BE4811800739BB9 /* DBQueries.swift */,
+				C8E8D1041BE20C9C00E6F5A8 /* RESTServices.swift */,
 				44AE0E3A1BB959DA00F90FD5 /* DBManager.swift */,
+				C826DFCA1BE33501008B4B0A /* SignedInUser.swift */,
+				C89A16881BC1420B0006955C /* SettingsViewController.swift */,
+				C8AE73C91BDB3EA8001A4F49 /* SettingsItemViewController.swift */,
+				C870EC461BE7E46D007D4DA7 /* SessionsViewController.swift */,
+				C86C4AA71BE1E4E600C00C20 /* SessionsListViewController.swift */,
+				C8EADAF21BE7BC5900515050 /* BackendServerConfig.swift */,
+				C8C5582A1BE1B6A800585A39 /* MapStyle.swift */,
+				C8C5582C1BE1B71300585A39 /* UploadType.swift */,
+				C8BA93D81BD4C39D00FD71BF /* AirCastingBLEController.h */,
+				C8BA93D91BD4C39D00FD71BF /* AirCastingBLEController.m */,
 				44C9160D1B8DB31800FE4B24 /* BackgroundCustomization.swift */,
 				44C9160E1B8DB31800FE4B24 /* DecibelMeter.swift */,
 				44C9160F1B8DB31800FE4B24 /* FileIO.swift */,
+				C8A3831B1BD1FEBB007A14CE /* LineGraphView.swift */,
 				44AE0E2A1BB93C3300F90FD5 /* FMDatabase.h */,
 				44AE0E2B1BB93C3300F90FD5 /* FMDatabase.m */,
 				44AE0E2C1BB93C3300F90FD5 /* FMDatabaseAdditions.h */,
@@ -276,18 +323,33 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C8BA93DA1BD4C39D00FD71BF /* AirCastingBLEController.m in Sources */,
 				44C916081B8DB28200FE4B24 /* DashboardController.swift in Sources */,
 				44C915E61B8DB04D00FE4B24 /* AppDelegate.swift in Sources */,
 				44C916121B8DB31800FE4B24 /* FileIO.swift in Sources */,
+				44DF6F751BE932BD00847112 /* AStarRouting.swift in Sources */,
 				44AE0E3B1BB959DA00F90FD5 /* DBManager.swift in Sources */,
+				44DF6F711BE9329B00847112 /* Node.swift in Sources */,
+				C826DFCB1BE33501008B4B0A /* SignedInUser.swift in Sources */,
 				44C916B31B8DB83600FE4B24 /* GraphViewController.swift in Sources */,
 				44C916111B8DB31800FE4B24 /* DecibelMeter.swift in Sources */,
 				44AE0E361BB93C3300F90FD5 /* FMDatabaseAdditions.m in Sources */,
 				44AE0E391BB93C3300F90FD5 /* FMResultSet.m in Sources */,
+				C870EC471BE7E46D007D4DA7 /* SessionsViewController.swift in Sources */,
 				44C916101B8DB31800FE4B24 /* BackgroundCustomization.swift in Sources */,
+				C89A16891BC1420B0006955C /* SettingsViewController.swift in Sources */,
+				C8AE73CA1BDB3EA8001A4F49 /* SettingsItemViewController.swift in Sources */,
 				44AE0E371BB93C3300F90FD5 /* FMDatabasePool.m in Sources */,
+				44DF6F731BE932AB00847112 /* Map.swift in Sources */,
+				C8E8D1051BE20C9C00E6F5A8 /* RESTServices.swift in Sources */,
+				C8A3831C1BD1FEBB007A14CE /* LineGraphView.swift in Sources */,
+				C86C4AA81BE1E4E600C00C20 /* SessionsListViewController.swift in Sources */,
+				C8EADAF31BE7BC5900515050 /* BackendServerConfig.swift in Sources */,
 				44AE0E381BB93C3300F90FD5 /* FMDatabaseQueue.m in Sources */,
+				C89D292E1BE4811800739BB9 /* DBQueries.swift in Sources */,
+				C8C5582B1BE1B6A800585A39 /* MapStyle.swift in Sources */,
 				44C916B51B8DB87200FE4B24 /* MapViewController.swift in Sources */,
+				C8C5582D1BE1B71300585A39 /* UploadType.swift in Sources */,
 				44AE0E351BB93C3300F90FD5 /* FMDatabase.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
