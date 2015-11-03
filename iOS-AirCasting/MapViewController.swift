@@ -336,7 +336,6 @@ class MapViewController: UIViewController,CLLocationManagerDelegate, MKMapViewDe
     
     @IBAction func saveChangesButton(sender: UIButton) {
        
-        //        var bgHeights: [Int] = []
         let bgHeights = objBgHeight.calculateHeights(redTextField.text.toInt()!, orange: orangeTextField.text.toInt()!, yellow: yellowTextField.text.toInt()!, green: greenTextField.text.toInt()!, black: blackTextField.text.toInt()!)
         
         println("ht: \(bgHeights.redHt)")
@@ -512,7 +511,6 @@ class MapViewController: UIViewController,CLLocationManagerDelegate, MKMapViewDe
         
         if SignedInUser.signInFlag == false {
             var alert = UIAlertView(title: "User not signed in.", message: "Please sign in to your profile.", delegate: nil, cancelButtonTitle: "Okay.")
-//            alert.title = "User not signed in."
             
             // Move to the UI thread
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
@@ -528,29 +526,6 @@ class MapViewController: UIViewController,CLLocationManagerDelegate, MKMapViewDe
             recordData()
         }
         
-//        sessionTitleView.hidden = false
-//        if DecibelMeter.isRecording{
-//            DecibelMeter.isRecording = false
-//        } else{
-//            DecibelMeter.isRecording = true
-//        }
-//        
-//        if sender.titleLabel?.text == "Start Recording"{
-//            uuid = NSUUID().UUIDString
-//            //            println(uuid)
-//            sender.setTitle("Stop Recording", forState: UIControlState.Normal)
-//            sender.setImage(UIImage(named: "StopRecord"), forState: UIControlState.Normal)
-//            
-//            //Initiate the timer to start storing the measurements
-//            timerDB = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: Selector("updateMeasurement"), userInfo: nil, repeats: true)
-//            
-//        } else{
-//            sender.setTitle("Start Recording", forState: UIControlState.Normal)
-//            sender.setImage(UIImage(named: "StartRecord"), forState: UIControlState.Normal)
-//            
-//            //Terminate the timer and stop storing measurements
-//            timerDB.invalidate()
-//        }
     }
     
     func recordData(){
@@ -590,7 +565,6 @@ class MapViewController: UIViewController,CLLocationManagerDelegate, MKMapViewDe
                 sessionTitleView.hidden = false
             }
             
-//            getSessions()
         }
     }
     
@@ -626,34 +600,20 @@ class MapViewController: UIViewController,CLLocationManagerDelegate, MKMapViewDe
         let timestamp = NSDateFormatter.localizedStringFromDate(NSDate(), dateStyle: .MediumStyle, timeStyle: .ShortStyle)
         
         var parentArray = [AnyObject]()
-        //        parentDic.setObject(uuid, forKey: "_id")
-        //parentDic.setObject(timestamp, forKey: "date")
+ 
         parentArray.append(timestamp)
-        //parentDic.setObject(timestamp, forKey: "created_at")
         parentArray.append(timestamp)
-        //parentDic.setObject(timestamp, forKey: "updated_at")
         parentArray.append(timestamp)
-        //parentDic.setObject(String(SignedInUser.userName), forKey: "username")
         parentArray.append(String(SignedInUser.userName))
-        //parentDic.setObject(String(SignedInUser.userID), forKey: "user_id")
         parentArray.append(String(SignedInUser.userID))
-        //parentDic.setObject(String(sessionTitle.text), forKey: "text")
         parentArray.append(String(title))
-        //parentDic.setObject(uuid, forKey: "session_id")
         parentArray.append(uuid)
-        //parentDic.setObject("filename", forKey: "photo_file_name")
         parentArray.append("filename")
-        //parentDic.setObject("JPEG", forKey: "photo_content_type")
         parentArray.append("JPEG")
-        //parentDic.setObject("1MB", forKey: "photo_file_size")
         parentArray.append("1MB")
-        //parentDic.setObject(timestamp, forKey: "photo_updated_at")
         parentArray.append(timestamp)
-        //parentDic.setObject("AirBeam", forKey: "sensor_package_name")
         parentArray.append("AirBeam")
-        //parentDic.setObject("iPhone5", forKey: "phone_model")
         parentArray.append("iPhone4")
-        //parentDic.setObject("iOS8", forKey: "os_version")
         parentArray.append("iOS8")
         
         println("Recording in progress")

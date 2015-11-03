@@ -43,8 +43,6 @@ class Map{
         println("midpointPlanar: \(mpLat),\(mpLong)")
         
         //Find the distance between source and midpoint as use that as radius for the circle
-        //        var clMidpointLat = CLLocation(latitude: sourceCoordinates["latitude"]!, longitude: sourceCoordinates["longitude"]!)
-        //        var clMidpointLong = CLLocation(latitude: mpLat, longitude: mpLong)
         var radius = getDistance(sourceCoordinates["latitude"]!, sourceLong: sourceCoordinates["longitude"]!, destLat: mpLat, destLong: mpLong)
         radius = radius / 100
         
@@ -108,15 +106,7 @@ class Map{
         var neighbourList = Array<Node>()
         
         arrNode.sort({ $0.distance <= $1.distance })
-        
-        
-        //        for i in arrNode {
-        //            println(i.distance)
-        //        }
-        
-        //Sort the dictionary based on distance
-        //        let sortedKeys = Array(arrNeighbour.keys).sorted(<)
-        //
+
         for i in 0..<arrNode.count {
             neighbourList.append(arrNode[i].node)
         }
@@ -144,10 +134,7 @@ class Map{
     
     //Get list of neighbours for a particular node
     func getNeighbourList(currentNode: Node, nodeList: Array<Node>) -> Array<Node> {
-        
-        //        println(coord["decibel"])
-        
-        //        var arrNeighbour: [Double: Node] = [Double: Node]()
+
         var arrNode: Array<SortedNbr> = Array<SortedNbr>()
         
         
@@ -160,8 +147,7 @@ class Map{
                 var distance = getDistance(coordLat, sourceLong: coordLong,
                     destLat: node.lat,
                     destLong: node.long)
-                
-                //                arrNeighbour[distance] = node
+
                 arrNode.append(SortedNbr(distance: distance, node: node))
                 
             }
@@ -181,8 +167,6 @@ class Map{
             }
             
         }
-        
-        //        println(neighbourList)
         
         return neighbourList
         

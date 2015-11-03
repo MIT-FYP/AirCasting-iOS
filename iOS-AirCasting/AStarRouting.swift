@@ -23,18 +23,7 @@ class AStarRouting {
         //initialising open and closed list
         var closedList = Array<Node>()
         var openList = [map.getNode(startLat, long: startLong)]
-        
-        
-        //setting start and goal location in the map array
-        //        map.setStartGoalLocation(startLat, startY: startLong, goalX: goalLat, goalY: goalLong)
-        
-        //Destination is an obstacle
-        //        if map.getNode(goalLat, long: goalLong).isObstacle {
-        //            return nil
-        //        }
-        
-        //Set start distance of starting location as 0
-        //        map.getNode(startLat, long: startLong).distanceFromStart = 0
+ 
         
         while !openList.isEmpty {
             //            println("Openlist not empty")
@@ -48,14 +37,12 @@ class AStarRouting {
             }
             
             closedList.append(currentNode)
-            //            println("clist cnt: \(closedList.count)")
             
             //Get the neighbours of the current position and find the next best node
             
             var neighbourList = map.getNeighbourList(currentNode, nodeList: map.mapList)
             
             for neighbour in neighbourList {
-                //                println("neighbour-lat: \(neighbour.lat), long: \(neighbour.long); obs: \(neighbour.isObstacle)")
                 
                 //If we have already traversed this node ignore and continue
                 if closedList.contains(neighbour) {
@@ -63,11 +50,6 @@ class AStarRouting {
                     continue
                 }
                 
-                //                if(!neighbour.isObstacle) {
-                
-                //                    let neighborDistanceFromStart = currentNode.gScore + map.getDistanceBetween(currentNode, node2: neighbour)
-                //                    println("neighborDistanceFromStart:\(neighborDistanceFromStart)")
-                //                    let costToNeighbour = map.getDistanceBetween(currentNode, node2: neighbour)
                 
                 var costToNeighbour: Float = neighbour.decibel
                 
