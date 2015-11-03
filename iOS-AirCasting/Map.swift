@@ -90,11 +90,19 @@ class Map{
         
         for point in coordinateList {
             
+            var distance: Double = 0
             //            if !(startLocationLat == (point["latitude"] as! NSString).floatValue &&
             //                startLocationLong == (point["longitude"] as! NSString).floatValue) {
-            var distance = getDistance(Double(startLocationLat), sourceLong: Double(startLocationLong),
-                destLat: (point["latitude"] as! NSString).doubleValue,
-                destLong: (point["longitude"] as! NSString).doubleValue)
+            if let lati = point["latitude"] as? Double {
+                distance = getDistance(Double(startLocationLat), sourceLong: Double(startLocationLong),
+                    destLat: point["latitude"] as! Double,
+                    destLong: point["longitude"] as! Double)
+            } else{
+                distance = getDistance(Double(startLocationLat), sourceLong: Double(startLocationLong),
+                    destLat: (point["latitude"] as! NSString).doubleValue,
+                    destLong: (point["longitude"] as! NSString).doubleValue)
+            }
+            
             
             //                arrNeighbour[distance] = createNode(point as! NSDictionary)
             arrNode.append(SortedNbr(distance: distance, node: createNode(point as! NSDictionary)))

@@ -606,14 +606,14 @@ class GraphViewController: UIViewController, UITextFieldDelegate, UIPickerViewDa
         
         let timestamp = NSDateFormatter.localizedStringFromDate(NSDate(), dateStyle: .MediumStyle, timeStyle: .ShortStyle)
         
-        
         var parentDic = NSMutableDictionary()
-        parentDic.setObject(uuid, forKey: "_id")
+        //        parentDic.setObject(uuid, forKey: "_id")
         parentDic.setObject(timestamp, forKey: "date")
         parentDic.setObject(timestamp, forKey: "created_at")
         parentDic.setObject(timestamp, forKey: "updated_at")
-        parentDic.setObject(SignedInUser.userID, forKey: "user_id")
-        parentDic.setObject(sessionTitle.text, forKey: "text")
+        parentDic.setObject(String(SignedInUser.userName), forKey: "username")
+        parentDic.setObject(String(SignedInUser.userID), forKey: "user_id")
+        parentDic.setObject(String(sessionTitle.text), forKey: "text")
         parentDic.setObject(uuid, forKey: "session_id")
         parentDic.setObject("filename", forKey: "photo_file_name")
         parentDic.setObject("JPEG", forKey: "photo_content_type")
@@ -1035,19 +1035,19 @@ class GraphViewController: UIViewController, UITextFieldDelegate, UIPickerViewDa
             
             var decibelDic = NSMutableDictionary()
             decibelDic.setObject("dB", forKey: "unit_symbol")
-            decibelDic.setObject(dict.objectForKey("decibel_value")!, forKey: "measured_value")
+            decibelDic.setObject((dict.objectForKey("decibel_value") as! NSString).floatValue, forKey: "measured_value")
             
             var temperatureDic = NSMutableDictionary()
             temperatureDic.setObject("C", forKey: "unit_symbol")
-            temperatureDic.setObject(dict.objectForKey("temperature_value")!, forKey: "measured_value")
+            temperatureDic.setObject((dict.objectForKey("temperature_value") as! NSString).floatValue, forKey: "measured_value")
             
             var particulateMatterDic = NSMutableDictionary()
             particulateMatterDic.setObject("ug/m3", forKey: "unit_symbol")
-            particulateMatterDic.setObject(dict.objectForKey("particulate_matter_value")!, forKey: "measured_value")
+            particulateMatterDic.setObject((dict.objectForKey("particulate_matter_value") as! NSString).floatValue, forKey: "measured_value")
             
             var humidityDic = NSMutableDictionary()
             humidityDic.setObject("%", forKey: "unit_symbol")
-            humidityDic.setObject(dict.objectForKey("humidity_value")!, forKey: "measured_value")
+            humidityDic.setObject((dict.objectForKey("humidity_value") as! NSString).floatValue, forKey: "measured_value")
             
             var readings = NSMutableDictionary()
             readings.setObject(decibelDic, forKey: "decibel")

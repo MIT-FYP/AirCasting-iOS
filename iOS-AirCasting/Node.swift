@@ -49,17 +49,47 @@ class Node {
     }
     
     init(coord: NSDictionary){
-        self.lat = (coord["latitude"] as! NSString).doubleValue
-        self.long = (coord["longitude"] as! NSString).doubleValue
+        if let lt = coord["latitude"] as? Double {
+            self.lat = coord["latitude"] as! Double
+        } else {
+            self.lat = (coord["latitude"] as! NSString).doubleValue
+        }
+        if let lg = coord["longitude"] as? Double {
+            self.long = coord["longitude"] as! Double
+        } else {
+            self.long = (coord["longitude"] as! NSString).doubleValue
+        }
+//        self.lat = (coord["latitude"] as! NSString).doubleValue
+//        self.long = (coord["longitude"] as! NSString).doubleValue
         neighbourList = Array<Node>()
         distanceFromStart = 9999
         isObstacle = false
         isStart = false
         isGoal = false
-        self.decibel = coord["decibel"] as! Float
-        self.temperature = coord["temperature"] as! Float
-        self.particulateMatter = coord["particulate_matter"] as! Float
-        self.humidity = coord["humidity"] as! Float
+        if let dec = coord["decibel"] as? Float {
+            self.decibel = coord["decibel"] as! Float
+        } else {
+            self.decibel = (coord["decibel"] as! NSString).floatValue
+        }
+        if let tmp = coord["temperature"] as? Float {
+            self.temperature = coord["temperature"] as! Float
+        } else {
+            self.temperature = (coord["temperature"] as! NSString).floatValue
+        }
+        if let pm = coord["particulate_matter"] as? Float {
+            self.particulateMatter = coord["particulate_matter"] as! Float
+        } else {
+            self.particulateMatter = (coord["particulate_matter"] as! NSString).floatValue
+        }
+        if let hm = coord["humidity"] as? Float {
+            self.humidity = coord["humidity"] as! Float
+        } else {
+            self.humidity = (coord["humidity"] as! NSString).floatValue
+        }
+//        self.decibel = coord["decibel"] as! Float
+//        self.temperature = coord["temperature"] as! Float
+//        self.particulateMatter = coord["particulate_matter"] as! Float
+//        self.humidity = coord["humidity"] as! Float
     }
     
     func setParent(parent: Node, withMoveCost moveCost: Float) {

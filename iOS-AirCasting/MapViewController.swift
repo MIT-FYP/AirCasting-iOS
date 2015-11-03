@@ -575,12 +575,13 @@ class MapViewController: UIViewController,CLLocationManagerDelegate, MKMapViewDe
         
         
         var parentDic = NSMutableDictionary()
-        parentDic.setObject(uuid, forKey: "_id")
+        //        parentDic.setObject(uuid, forKey: "_id")
         parentDic.setObject(timestamp, forKey: "date")
         parentDic.setObject(timestamp, forKey: "created_at")
         parentDic.setObject(timestamp, forKey: "updated_at")
-        parentDic.setObject(SignedInUser.userID, forKey: "user_id")
-        parentDic.setObject(sessionTitle.text, forKey: "text")
+        parentDic.setObject(String(SignedInUser.userName), forKey: "username")
+        parentDic.setObject(String(SignedInUser.userID), forKey: "user_id")
+        parentDic.setObject(String(sessionTitle.text), forKey: "text")
         parentDic.setObject(uuid, forKey: "session_id")
         parentDic.setObject("filename", forKey: "photo_file_name")
         parentDic.setObject("JPEG", forKey: "photo_content_type")
@@ -989,8 +990,18 @@ class MapViewController: UIViewController,CLLocationManagerDelegate, MKMapViewDe
                     
                     counter = counter + 1
                     var sessionValue: AnyObject? = element.valueForKey("value")
-                    var latitude = ((sessionValue?.valueForKey("latitude") as! String) as NSString).doubleValue
-                    var longitude = ((sessionValue?.valueForKey("longitude") as! String) as NSString).doubleValue
+                    
+                    var latitude: Double = 0
+                    var longitude: Double = 0
+                    
+                    if let lat = sessionValue?.valueForKey("latitude") as? Double {
+                        latitude = (sessionValue?.valueForKey("latitude") as? Double)!
+                        longitude = (sessionValue?.valueForKey("longitude") as? Double)!
+                    } else{
+                        latitude = ((sessionValue?.valueForKey("latitude") as! String) as NSString).doubleValue
+                        longitude = ((sessionValue?.valueForKey("longitude") as! String) as NSString).doubleValue
+                    }
+                    
                     
                     if(counter == arrSession.count)
                     {
@@ -1080,19 +1091,19 @@ class MapViewController: UIViewController,CLLocationManagerDelegate, MKMapViewDe
             
             var decibelDic = NSMutableDictionary()
             decibelDic.setObject("dB", forKey: "unit_symbol")
-            decibelDic.setObject(dict.objectForKey("decibel_value")!, forKey: "measured_value")
+            decibelDic.setObject((dict.objectForKey("decibel_value") as! NSString).floatValue, forKey: "measured_value")
             
             var temperatureDic = NSMutableDictionary()
             temperatureDic.setObject("C", forKey: "unit_symbol")
-            temperatureDic.setObject(dict.objectForKey("temperature_value")!, forKey: "measured_value")
+            temperatureDic.setObject((dict.objectForKey("temperature_value") as! NSString).floatValue, forKey: "measured_value")
             
             var particulateMatterDic = NSMutableDictionary()
             particulateMatterDic.setObject("ug/m3", forKey: "unit_symbol")
-            particulateMatterDic.setObject(dict.objectForKey("particulate_matter_value")!, forKey: "measured_value")
+            particulateMatterDic.setObject((dict.objectForKey("particulate_matter_value") as! NSString).floatValue, forKey: "measured_value")
             
             var humidityDic = NSMutableDictionary()
             humidityDic.setObject("%", forKey: "unit_symbol")
-            humidityDic.setObject(dict.objectForKey("humidity_value")!, forKey: "measured_value")
+            humidityDic.setObject((dict.objectForKey("humidity_value") as! NSString).floatValue, forKey: "measured_value")
             
             var readings = NSMutableDictionary()
             readings.setObject(decibelDic, forKey: "decibel")

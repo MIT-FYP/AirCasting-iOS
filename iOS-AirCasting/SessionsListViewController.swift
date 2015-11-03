@@ -220,19 +220,19 @@ class SessionsListViewController: UIViewController,UITableViewDataSource, UITabl
             
             var decibelDic = NSMutableDictionary()
             decibelDic.setObject("dB", forKey: "unit_symbol")
-            decibelDic.setObject(dict.objectForKey("decibel_value")!, forKey: "measured_value")
+            decibelDic.setObject((dict.objectForKey("decibel_value") as! NSString).floatValue, forKey: "measured_value")
             
             var temperatureDic = NSMutableDictionary()
             temperatureDic.setObject("C", forKey: "unit_symbol")
-            temperatureDic.setObject(dict.objectForKey("temperature_value")!, forKey: "measured_value")
+            temperatureDic.setObject((dict.objectForKey("temperature_value") as! NSString).floatValue, forKey: "measured_value")
             
             var particulateMatterDic = NSMutableDictionary()
             particulateMatterDic.setObject("ug/m3", forKey: "unit_symbol")
-            particulateMatterDic.setObject(dict.objectForKey("particulate_matter_value")!, forKey: "measured_value")
+            particulateMatterDic.setObject((dict.objectForKey("particulate_matter_value") as! NSString).floatValue, forKey: "measured_value")
             
             var humidityDic = NSMutableDictionary()
             humidityDic.setObject("%", forKey: "unit_symbol")
-            humidityDic.setObject(dict.objectForKey("humidity_value")!, forKey: "measured_value")
+            humidityDic.setObject((dict.objectForKey("humidity_value") as! NSString).floatValue, forKey: "measured_value")
             
             var readings = NSMutableDictionary()
             readings.setObject(decibelDic, forKey: "decibel")
