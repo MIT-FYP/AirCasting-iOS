@@ -122,9 +122,9 @@ After service starts, run the AirCasting application for iOS.
 Troubleshooting
 ===============
 
-The script have 
- * FAQ
- * Maintainers
+The service shows buffer error ("index out of range") at random. Restart of the service fixes the issue.
+Due to time constraint of this project, issue was not been resolved at this time which can be a future 
+development consideration.
  
 Resources
 =========
