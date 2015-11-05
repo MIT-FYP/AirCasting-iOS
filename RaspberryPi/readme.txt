@@ -93,3 +93,9 @@ Troubleshooting
 The script have 
  * FAQ
  * Maintainers
+ 
+Resources
+=========
+
+Online video for Bleno installation and test
+https://www.youtube.com/watch?v=8YA6KVBs1pA
