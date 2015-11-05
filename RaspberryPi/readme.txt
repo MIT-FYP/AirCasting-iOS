@@ -47,6 +47,10 @@ Installation of software packages
 
 The following steps are required to install the pakcages
 
+  - Update the OS
+  
+  	sudo apt-get update
+
   - Install BlueZ protocol stack with developers package
 
 	sudo apt-get install bluetooth bluez libbluetooth-dev libudev-dev
