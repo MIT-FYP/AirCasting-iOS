@@ -69,6 +69,11 @@ The following steps are required to install the pakcages
 	sudo apt-get install npm
 	npm -v
 
+  - Create a directory and go inside directory
+  
+  	mkdir bleno
+  	cd bleno
+
   - Install Bleno package
 
 	npm install bleno
