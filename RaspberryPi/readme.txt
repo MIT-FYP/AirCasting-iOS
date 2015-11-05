@@ -40,7 +40,8 @@ Supporting package
 ------------------
 
   Arduino
-
+  
+* Arduino package allow to monitor the AirBeam device through its serial monitor tool
 
 Installation of software packages
 =================================
@@ -92,8 +93,25 @@ Configuration
 
 After installing the required packages, airbeam sensor data can be read using the instruction below:
 
-  - Go to Bleno folder
+  - Go to bleno folder created during installation 
+  - Download all JavaScript files and the airbeamdata.txt file and save in the directory
+  
+Run Scripts
+===========
 
+After configuration, all scripts can be executed from that directory
+
+  - Go to bleno directory created during installation
+  
+  - To check the AirBeam device connected through USB
+  
+  	sudo node checkAirbeam.js
+  	
+  - To run the Bluetooth notifying service for AirBeam data collection
+  
+  	sudo node airbeamNotifyService.js
+
+After service starts, run the AirCasting application for iOS.
 
 
 Troubleshooting
@@ -105,6 +123,12 @@ The script have
  
 Resources
 =========
+
+Raspbian OS download
+https://www.raspberrypi.org/downloads/raspbian/
+
+BlueZ programming guide
+https://people.csail.mit.edu/albert/bluez-intro/
 
 Bleno package in GitHub
 https://github.com/sandeepmistry/bleno
