@@ -49,7 +49,7 @@ The following steps are required to install the pakcages
 
   - Install BlueZ protocol stack with developers package
 
-	sudo apt-get install bluetooth bluez-utils libbluetooth-dev libudev-dev
+	sudo apt-get install bluetooth bluez libbluetooth-dev libudev-dev
 
   - Add external repository
 
@@ -96,6 +96,9 @@ The script have
  
 Resources
 =========
+
+Bleno package in GitHub
+https://github.com/sandeepmistry/bleno
 
 Online video for Bleno installation and test
 https://www.youtube.com/watch?v=8YA6KVBs1pA
