@@ -29,7 +29,7 @@ Hardware Modules
 Software Packages
 -----------------
 
-  Raspbian OS Jessie (Kernel 4.1)
+  Raspbian OS Wheezy (Kernel 3.18)
   BlueZ
   nodejs
   npm
