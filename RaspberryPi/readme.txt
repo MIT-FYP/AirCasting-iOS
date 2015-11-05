@@ -72,8 +72,8 @@ The following steps are required to install the pakcages
 
   - Create a directory and go inside directory
   
-  	mkdir bleno
-  	cd bleno
+  	mkdir created_folder
+  	cd created_folder
 
   - Install Bleno package
 
@@ -94,6 +94,9 @@ Configuration
 After installing the required packages, airbeam sensor data can be read using the instruction below:
 
   - Go to bleno folder created during installation 
+  
+  	cd .../created_folder/node_modules/bleno
+  	
   - Download all JavaScript files and the airbeamdata.txt file and save in the directory
   
 Run Scripts
@@ -102,6 +105,8 @@ Run Scripts
 After configuration, all scripts can be executed from that directory
 
   - Go to bleno directory created during installation
+  
+  	cd .../created_folder/node_modules/bleno
   
   - To check the AirBeam device connected through USB
   
